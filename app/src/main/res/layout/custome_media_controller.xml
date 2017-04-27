@@ -1,0 +1,207 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#00000000">
+    <LinearLayout
+        android:id="@+id/ll_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/px84"
+        android:background="#30000000"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <ImageView
+            android:id="@+id/iv_back_arrow"
+            android:layout_width="@dimen/px84"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_keyboard_arrow_left_grey"/>
+        <TextView
+            android:id="@+id/tv_media_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/px24"
+            android:layout_marginRight="@dimen/px24"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_weight="1"
+            android:text="title"
+            android:textSize="@dimen/px32"
+            android:textColor="@color/white"/>
+        <TextView
+            android:id="@+id/tv_show_power"
+            android:layout_width="@dimen/px70"
+            android:layout_height="@dimen/px38"
+            android:background="@drawable/bg_power_drawable"
+            android:gravity="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/px24"
+            android:text=""
+            android:visibility="visible"/>
+        <TextView
+            android:id="@+id/tv_show_time"
+            android:layout_width="@dimen/px70"
+            android:layout_height="@dimen/px38"
+            android:layout_marginLeft="@dimen/px12"
+            android:layout_marginRight="@dimen/px24"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="@dimen/px24"
+            android:text=""/>
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center">
+            <ImageView
+                android:id="@+id/iv_changge_media_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_wb_sunny_grey600_36dp"
+                android:visibility="gone"/>
+            <TextView
+                android:id="@+id/tv_show_change_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/px15"
+                android:paddingRight="@dimen/px15"
+                android:layout_below="@id/iv_changge_media_img"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/px12"
+                android:textSize="@dimen/px32"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:text=""
+                android:visibility="gone"/>
+            </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#00000000"
+            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/ll_ver_top_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="4dip"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:background="#33000000">
+
+                <ImageButton android:id="@+id/prev"
+                    style="@android:style/MediaButton.Previous"
+                    android:contentDescription="@string/controller_description_last" />
+
+                <ImageButton android:id="@+id/rew"
+                    style="@android:style/MediaButton.Rew"
+                    android:contentDescription="@string/controller_description_back" />
+
+                <ImageButton android:id="@+id/pause"
+                    style="@android:style/MediaButton.Play"
+                    android:contentDescription="@string/controller_description_play" />
+
+                <ImageButton android:id="@+id/ffwd"
+                    style="@android:style/MediaButton.Ffwd"
+                    android:contentDescription="@string/controller_description_go" />
+
+                <ImageButton android:id="@+id/next"
+                    style="@android:style/MediaButton.Next"
+                    android:contentDescription="@string/controller_description_next" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_ver_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:gravity="center_vertical"
+                android:background="#33000000">
+
+                <TextView android:id="@+id/time_current"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="@dimen/px14"
+                    android:layout_marginRight="@dimen/px14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/px28"
+                    android:textColor="@color/white"/>
+
+                <android.support.v7.widget.AppCompatSeekBar
+                    android:id="@+id/mediacontroller_progress"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+                <TextView android:id="@+id/time"
+                    android:textStyle="bold"
+                    android:layout_marginRight="@dimen/px14"
+                    android:layout_marginLeft="@dimen/px14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/px28"
+                    android:textColor="@color/white"/>
+
+                <ImageButton android:id="@+id/fullscreen"
+                    android:layout_marginRight="@dimen/px14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_face_unlock_black_36dp"
+                    android:contentDescription="@string/controller_description_fullscreen" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_hor_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:background="#0f000000"
+                android:visibility="visible">
+
+                <ImageButton android:id="@+id/pause2"
+                    style="@android:style/MediaButton.Play"
+                    android:layout_width="@dimen/px84"
+                    android:layout_height="@dimen/px84"
+                    android:layout_marginLeft="@dimen/px10"
+                    android:contentDescription="@string/controller_description_play" />
+
+                <TextView android:id="@+id/time_current2"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="@dimen/px14"
+                    android:layout_marginRight="@dimen/px14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/px28"
+                    android:textColor="@color/white"/>
+
+                <android.support.v7.widget.AppCompatSeekBar
+                    android:id="@+id/mediacontroller_progress2"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView android:id="@+id/time2"
+                    android:textStyle="bold"
+                    android:layout_marginRight="@dimen/px14"
+                    android:layout_marginLeft="@dimen/px14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/px28"
+                    android:textColor="@color/white"/>
+
+                <ImageButton android:id="@+id/fullscreen2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/px14"
+                    android:background="@drawable/ic_screen_rotation_grey"
+                    android:contentDescription="@string/controller_description_fullscreen" />
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

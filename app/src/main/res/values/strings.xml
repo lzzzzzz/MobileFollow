@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">MobileFollow</string>
+    <string name="toast_not_network">无法连接到网络</string>
+    <string name="text_dialog_alarm_str_title">提醒</string>
+    <string name="text_dialog_alarm_str_content">我在这里</string>
+    <string name="text_toast_str_send_talk_mesage">发送信息失败</string>
+
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+
+    <!-- 	Show STL -->
+    <string name="stl_load_progress_message">请等一会.</string>
+    <string name="stl_load_progress_title">STL 文件加载中...</string>
+    <string name="error_fetch_data">STL 文件解析失败.</string>
+    <string name="error_outbig"> 文件过大，解析失败！</string>
+    <string name="close_dialog">关闭对话框</string>
+    <string name="parent_directory">父目录</string>
+    <string name="choose_stl_file">选择STL文件</string>
+    <!-- toggle button -->
+    <string name="toggleButtonMove">移动</string>
+    <string name="toggleButtonRotate">旋转</string>
+    <!-- preferences -->
+    <string name="app_pref">STL展示界面的配置</string>
+    <string name="red">红</string>
+    <string name="green">绿</string>
+    <string name="blue">蓝</string>
+    <string name="alpha">透明度</string>
+    <string name="objectColor">模型颜色:</string>
+    <string name="displayAxis">展示坐标和网格:</string>
+    <string name="grids">网格:</string>
+    <string name="axes">坐标:</string>
+    <string name="resetToDefault">重置默认值.</string>
+    <string name="closePreferences">保存 &amp; 关闭</string>
+
+    <string name="controller_description_last">上一集</string>
+    <string name="controller_description_next">下一集</string>
+    <string name="controller_description_back">快退</string>
+    <string name="controller_description_go">快进</string>
+    <string name="controller_description_play">暂停</string>
+    <string name="controller_description_fullscreen">暂停</string>
+
+</resources>

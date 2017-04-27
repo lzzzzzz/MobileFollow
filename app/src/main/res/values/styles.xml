@@ -1,0 +1,48 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <!--colorPrimary app标题背景色
+    colorPrimaryDark 手机状态栏颜色 与statusBarColor类似
+    colorAccent 应用控件线主题颜色
+    windowIsTranslucent activity切换透明效果
+    windowIsTranslucent activity切换透明效果
+    windowBackground activity背景主题色
+    navigationBarColor 底部菜单背景主题颜色
+    -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--导航栏底色-->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!--状态栏底色-->
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <!--导航栏上的标题颜色-->
+        <item name="android:textColorPrimary">@color/white</item>
+        <!--按钮选中或者点击获得焦点后的颜色-->
+        <item name="colorAccent">@color/colorPrimary</item>
+        <!--Button按钮正常状态颜色-->
+        <item name="colorButtonNormal">@color/accent_material_light</item>
+        <!--EditText 输入框中字体的颜色-->
+        <item name="editTextColor">@android:color/black</item>
+        <!--<item name="android:windowIsTranslucent">true</item>
+        &lt;!&ndash;Activity窗口的颜色&ndash;&gt;
+        <item name="android:windowBackground">@color/col_gray_bg</item>-->
+        <!--<item name="android:statusBarColor">@color/colorPrimary</item>-->
+        <item name="android:actionMenuTextAppearance">@style/MenuTextStyle</item>
+        <!-- AppCompatEditText未选择的底线颜色 -->
+        <item name="colorControlNormal">@color/colorPrimary</item>
+        <!-- AppCompatEditText选择的底线颜色 -->
+        <item name="colorControlActivated">@color/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="MenuTextStyle" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="actionMenuTextColor">@android:color/black</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+</resources>
