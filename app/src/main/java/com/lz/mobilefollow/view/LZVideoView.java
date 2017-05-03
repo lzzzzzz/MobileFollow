@@ -21,14 +21,21 @@ import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
+
 import com.lz.mobilefollow.R;
 import com.lz.mobilefollow.lzcore.framework.log.LogUtils;
+import com.lz.mobilefollow.view.Controller;
 
 import java.io.IOException;
+
+import static android.widget.LinearLayout.HORIZONTAL;
+import static android.widget.LinearLayout.VERTICAL;
 
 /**
  * Created by LZ on 2016/12/27.
  * 自定义播放器
+ * 注意：全屏状态下不能直接销毁activity,需要先变为竖屏然后销毁
+ * 使用时需要对应activity生命周期。
  */
 
 public class LZVideoView extends RelativeLayout {
@@ -56,6 +63,13 @@ public class LZVideoView extends RelativeLayout {
     private int marginBottom=0;
     private int marginLeft=0;
     private int marginRight=0;
+
+    /**视频地址*/
+    private String video_path="";
+    /**视频标题*/
+    private String video_title="";
+
+    private MediaPlayer.OnCompletionListener onCompletionListener;
 
     public LZVideoView(Context context) {
         super(context);
@@ -85,12 +99,13 @@ public class LZVideoView extends RelativeLayout {
         }
     }
 
+    /**创建视图*/
     private void createView(){
         LayoutInflater mInflater = LayoutInflater.from(context);
         View myView = mInflater.inflate(R.layout.custome_z_video_view, null);
         addView(myView);
     }
-
+    /**初始化布局*/
     private void initView(){
         initListeners();
         surfacecontainer=(FrameLayout)findViewById(R.id.surfacecontainer);
@@ -99,17 +114,24 @@ public class LZVideoView extends RelativeLayout {
         mSurfaceView = (SurfaceView) findViewById(R.id.surfaceview);
         SurfaceHolder surfaceHolder = mSurfaceView.getHolder();
         surfaceHolder.addCallback(mCallback);
+        initMediaplayer();
+    }
+    /**初始化播放器*/
+    private void initMediaplayer(){
         if(!isInEditMode()){
             //造成错误的代码段
-            mPlayer = new MediaPlayer();
-            mController = new Controller(context);
-            mController.setControlStyle(Controller.CONTROL_FLAG_HORIZONTAL);
             try {
-
-                mPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-                //http://source.wenxiaoyou.com/app/answer/video/truncate/uid//aid-635-2892795c-e8e7-4095-a96a-cb65d6492bda.mp4
-                //http://source.wenxiaoyou.com/app/answer/video/truncate/uid//aid-631-9ccff71c-ab6c-42db-b9f9-71ce12ac7543.mp4
-                mPlayer.setDataSource(context, Uri.parse("http://source.wenxiaoyou.com/app/answer/video/truncate/uid//aid-635-2892795c-e8e7-4095-a96a-cb65d6492bda.mp4"));
+                if(null==mPlayer){
+                    mPlayer = new MediaPlayer();
+                    mPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                }
+                if(null==mController){
+                    mController = new Controller(context);
+                    mController.setControlStyle(Controller.CONTROL_FLAG_HORIZONTAL);
+                }
+                mPlayer.stop();
+                mPlayer.reset();
+                mPlayer.setDataSource(context, Uri.parse(null==video_path?"":video_path));
                 mPlayer.setOnPreparedListener(mPreparedListener);
                 mPlayer.prepareAsync();
 
@@ -124,7 +146,6 @@ public class LZVideoView extends RelativeLayout {
             }
         }
     }
-
     /**释放播放器资源*/
     private void releaseMediaPlayer() {
         mController.onDestroy();
@@ -133,6 +154,35 @@ public class LZVideoView extends RelativeLayout {
             mPlayer.stop();
             mPlayer.release();
         }
+    }
+
+    /**设置播放完毕监听*/
+    public void setOnCompletionListener(MediaPlayer.OnCompletionListener onCompletionListener){
+        this.onCompletionListener=onCompletionListener;
+    }
+    /**设置视频播放地址*/
+    public void setVideoPath(String path){
+        this.video_path=path;
+    }
+    /**设置视频播放标题*/
+    public void setVideoTitle(String title){
+        this.video_title=title;
+    }
+
+    /**开始准备播放视频*/
+    public void playVideo(){
+        initMediaplayer();
+    }
+    /**开始准备播放视频*/
+    public void playVideo(String path){
+        this.video_path=path;
+        initMediaplayer();
+    }
+    /**开始准备播放视频*/
+    public void playVideo(String path,String title){
+        this.video_path=path;
+        this.video_title=title;
+        initMediaplayer();
     }
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -152,6 +202,7 @@ public class LZVideoView extends RelativeLayout {
         mPlayer.pause();
     }
 
+    /**初始化监听*/
     private void initListeners() {
         mCallback = new SurfaceHolder.Callback() {
 
@@ -172,9 +223,12 @@ public class LZVideoView extends RelativeLayout {
                 pb_prapare_progress.setVisibility(View.GONE);
                 mController.setMediaPlayer(mPlayerControl);
                 mController.setAnchorView(surfacecontainer);
-                mController.setMediaTitle("测试视频");
+                mController.setMediaTitle(null==video_title?"":video_title);
                 mPlayer.start();
                 setSurfaceParam();
+                if(null!=onCompletionListener){
+                    mPlayer.setOnCompletionListener(onCompletionListener);
+                }
             }
         };
 
@@ -227,13 +281,9 @@ public class LZVideoView extends RelativeLayout {
             public void fullScreen() {
                 boolean flag=context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;
                 if(flag){
-                    hideBar();
-                    ((Activity)context).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE); //横屏
-                    setSurfaceParam();
-                }else{
-                    showBar();
-                    ((Activity)context).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); //竖屏
-                    setSurfaceParam();
+                    showOrientation(HORIZONTAL);
+                }else{//竖屏
+                    showOrientation(VERTICAL);
                 }
             }
 
@@ -241,12 +291,25 @@ public class LZVideoView extends RelativeLayout {
             public void onClickBack() {
                 boolean flag=context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;
                 if(!flag){
-                    showBar();
-                    ((Activity)context).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); //竖屏
-                    setSurfaceParam();
+                    showOrientation(VERTICAL);
                 }
             }
         };
+    }
+
+    /**设置横屏或竖屏
+     * @param flag：VERTICAL（1）竖屏 HORIZONTAL（0）横屏
+     * */
+    public void showOrientation(int flag){
+        if(flag==VERTICAL){//竖屏
+            showBar();
+            ((Activity)context).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); //竖屏
+            setSurfaceParam();
+        }else if(flag==HORIZONTAL){
+            hideBar();
+            ((Activity)context).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE); //横屏
+            setSurfaceParam();
+        }
     }
     @Override
     public void onConfigurationChanged(Configuration newConfig) {

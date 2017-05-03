@@ -18,6 +18,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="切换视频"
+                android:onClick="changeVideo"/>
 
             <TextView
                 android:layout_width="wrap_content"

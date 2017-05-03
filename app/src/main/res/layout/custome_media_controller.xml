@@ -74,134 +74,137 @@
                 android:text=""
                 android:visibility="gone"/>
             </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#00000000"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
         <LinearLayout
+            android:id="@+id/ll_ver_top_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:background="#00000000"
-            android:orientation="vertical">
-            <LinearLayout
-                android:id="@+id/ll_ver_top_content"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:paddingTop="4dip"
-                android:orientation="horizontal"
-                android:visibility="gone"
-                android:background="#33000000">
+            android:gravity="center"
+            android:paddingTop="4dip"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:background="#33000000">
 
-                <ImageButton android:id="@+id/prev"
-                    style="@android:style/MediaButton.Previous"
-                    android:contentDescription="@string/controller_description_last" />
+            <ImageButton android:id="@+id/prev"
+                style="@android:style/MediaButton.Previous"
+                android:contentDescription="@string/controller_description_last" />
 
-                <ImageButton android:id="@+id/rew"
-                    style="@android:style/MediaButton.Rew"
-                    android:contentDescription="@string/controller_description_back" />
+            <ImageButton android:id="@+id/rew"
+                style="@android:style/MediaButton.Rew"
+                android:contentDescription="@string/controller_description_back" />
 
-                <ImageButton android:id="@+id/pause"
-                    style="@android:style/MediaButton.Play"
-                    android:contentDescription="@string/controller_description_play" />
+            <ImageButton android:id="@+id/pause"
+                style="@android:style/MediaButton.Play"
+                android:contentDescription="@string/controller_description_play" />
 
-                <ImageButton android:id="@+id/ffwd"
-                    style="@android:style/MediaButton.Ffwd"
-                    android:contentDescription="@string/controller_description_go" />
+            <ImageButton android:id="@+id/ffwd"
+                style="@android:style/MediaButton.Ffwd"
+                android:contentDescription="@string/controller_description_go" />
 
-                <ImageButton android:id="@+id/next"
-                    style="@android:style/MediaButton.Next"
-                    android:contentDescription="@string/controller_description_next" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/ll_ver_content"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:visibility="gone"
-                android:gravity="center_vertical"
-                android:background="#33000000">
-
-                <TextView android:id="@+id/time_current"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="@dimen/px14"
-                    android:layout_marginRight="@dimen/px14"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/px28"
-                    android:textColor="@color/white"/>
-
-                <android.support.v7.widget.AppCompatSeekBar
-                    android:id="@+id/mediacontroller_progress"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="0dip"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
-
-                <TextView android:id="@+id/time"
-                    android:textStyle="bold"
-                    android:layout_marginRight="@dimen/px14"
-                    android:layout_marginLeft="@dimen/px14"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/px28"
-                    android:textColor="@color/white"/>
-
-                <ImageButton android:id="@+id/fullscreen"
-                    android:layout_marginRight="@dimen/px14"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/ic_face_unlock_black_36dp"
-                    android:contentDescription="@string/controller_description_fullscreen" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/ll_hor_content"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:background="#0f000000"
-                android:visibility="visible">
-
-                <ImageButton android:id="@+id/pause2"
-                    style="@android:style/MediaButton.Play"
-                    android:layout_width="@dimen/px84"
-                    android:layout_height="@dimen/px84"
-                    android:layout_marginLeft="@dimen/px10"
-                    android:contentDescription="@string/controller_description_play" />
-
-                <TextView android:id="@+id/time_current2"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="@dimen/px14"
-                    android:layout_marginRight="@dimen/px14"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/px28"
-                    android:textColor="@color/white"/>
-
-                <android.support.v7.widget.AppCompatSeekBar
-                    android:id="@+id/mediacontroller_progress2"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="0dip"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-                <TextView android:id="@+id/time2"
-                    android:textStyle="bold"
-                    android:layout_marginRight="@dimen/px14"
-                    android:layout_marginLeft="@dimen/px14"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/px28"
-                    android:textColor="@color/white"/>
-
-                <ImageButton android:id="@+id/fullscreen2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/px14"
-                    android:background="@drawable/ic_screen_rotation_grey"
-                    android:contentDescription="@string/controller_description_fullscreen" />
+            <ImageButton android:id="@+id/next"
+                style="@android:style/MediaButton.Next"
+                android:contentDescription="@string/controller_description_next" />
 
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_ver_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:gravity="center_vertical"
+            android:background="#33000000">
+
+            <TextView android:id="@+id/time_current"
+                android:textStyle="bold"
+                android:layout_marginLeft="@dimen/px14"
+                android:layout_marginRight="@dimen/px14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/px28"
+                android:textColor="@color/white"/>
+
+            <android.support.v7.widget.AppCompatSeekBar
+                android:id="@+id/mediacontroller_progress"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <TextView android:id="@+id/time"
+                android:textStyle="bold"
+                android:layout_marginRight="@dimen/px14"
+                android:layout_marginLeft="@dimen/px14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/px28"
+                android:textColor="@color/white"/>
+
+            <ImageButton android:id="@+id/fullscreen"
+                android:layout_marginRight="@dimen/px14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_face_unlock_black_36dp"
+                android:contentDescription="@string/controller_description_fullscreen" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_hor_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:background="#0f000000"
+            android:visibility="visible">
+
+            <ImageButton android:id="@+id/pause2"
+                style="@android:style/MediaButton.Play"
+                android:layout_width="@dimen/px84"
+                android:layout_height="@dimen/px84"
+                android:layout_marginLeft="@dimen/px10"
+                android:contentDescription="@string/controller_description_play" />
+
+            <TextView android:id="@+id/time_current2"
+                android:textStyle="bold"
+                android:layout_marginLeft="@dimen/px14"
+                android:layout_marginRight="@dimen/px14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/px28"
+                android:textColor="@color/white"/>
+
+            <android.support.v7.widget.AppCompatSeekBar
+                android:id="@+id/mediacontroller_progress2"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView android:id="@+id/time2"
+                android:textStyle="bold"
+                android:layout_marginRight="@dimen/px14"
+                android:layout_marginLeft="@dimen/px14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/px28"
+                android:textColor="@color/white"/>
+
+            <ImageButton android:id="@+id/fullscreen2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/px14"
+                android:background="@drawable/ic_screen_rotation_grey"
+                android:contentDescription="@string/controller_description_fullscreen" />
+
     </LinearLayout>
+</LinearLayout>
 </RelativeLayout>

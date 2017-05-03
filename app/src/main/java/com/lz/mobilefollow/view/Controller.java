@@ -952,8 +952,9 @@ public class Controller extends FrameLayout {
             return;
         }
         int change = (int) (percent);
-        int perdr=5*1000;
-        int nowDra=mPlayerCtrl.getDuration()*(mProgress.getProgress()/1000);
+        int perdr=2*1000;
+        double mix=mPlayerCtrl.getDuration()*mProgress.getProgress()/1000;
+        int nowDra=(int)mix;
         if(change>0){
             iv_changge_media_img.setVisibility(GONE);
             tv_show_change_info.setVisibility(VISIBLE);
